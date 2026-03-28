@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Meta Tags para compatibilidade e responsividade -->
+    <meta charset="UTF-8">
+    <!-- Define o conjunto de caracteres como UTF-8 para suportar caracteres especiais -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Garante que o site seja responsivo e adapte a diferentes tamanhos de tela -->
+    <title>Netflix</title>
+    <!-- Título da página exibido na aba do navegador -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Importa o arquivo de estilos CSS -->
+</head>
+<body>
+    <main>
+        <!-- Botão para alternar entre modo escuro e claro -->
+        <button id="theme-toggle" aria-label="Alternar entre modo claro e escuro">
+            <!-- Ícone dinâmico que muda entre lua (🌙) e sol (☀️) -->
+            <span id="theme-icon">🌙</span>
+        </button>
+
+        <!-- Título principal da página -->
+        <h1>Quem está assistindo?</h1>
+
+        <!-- Seção contendo a lista de perfis disponíveis -->
+        <section aria-label="Perfis disponíveis">
+            <!-- Lista não ordenada de perfis (Netflix) -->
+            <ul class="profiles">
+                <!-- Cada perfil é um item da lista não ordenada -->
+                <li class="profile">
+                    <a href="catalogo/catalogo.html" title="Acessar catálogo com o perfil Maneu">
+                        <!-- Figure contém a imagem do perfil e a legenda (nome) -->
+                        <figure>
+                            <img src="/assets/foto maneu.jfif" alt="Um personagem de aparência gótica e caricata, com cabelos roxos e monóculo, posa em um cenário fantástico de miniaturas sombrias iluminadas por velas.">
+                            <!-- Nome do perfil exibido abaixo da imagem -->
+                            <figcaption> Maneu </figcaption>
+                        </figure>
+                    </a>
+                </li>
+
+                <!-- Segundo perfil -->
+                <li class="profile">
+                    <a href="catalogo/catalogo.html" title="Acessar catálogo com o perfil Junio">
+                        <figure>
+                            <img src="/assets/foto junio].jfif" alt="Imagem de um boné azul">
+                            <figcaption>Junio</figcaption>
+                        </figure>
+                    </a>
+                </li>
+
+                <!-- Terceiro perfil -->
+                <li class="profile">
+                    <a href="catalogo/catalogo.html" title="Acessar catálogo com o perfil Eduarda">
+                        <figure>
+                            <img src="/assets/foto eduarda.jfif" alt="Imagem de um boné azul">
+                            <figcaption>Eduarda</figcaption>
+                        </figure>
+                    </a>
+                </li>
+
+                <!-- Quarto perfil -->
+                <li class="profile">
+                    <a href="catalogo/catalogo.html" title="Acessar catálogo com o perfil Carol">
+                        <figure>
+                            <img src="/assets/foto carol.jfif" alt="Imagem de um boné azul">
+                            <figcaption>Carol</figcaption>
+                        </figure>
+                    </a>
+                </li>
+
+                <!-- Quinto perfil -->
+                <li class="profile">
+                    <a href="catalogo/catalogo.html" title="Acessar catálogo com o perfil Josiani">
+                        <figure>
+                            <img src="/assets/foto josi.jfif" alt="Imagem de um boné azul">
+                            <figcaption>Josiani</figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Script JavaScript que gerencia o toggle de tema (dark/light mode) -->
+    <script src="script.js"></script>
+</body>
+</html>

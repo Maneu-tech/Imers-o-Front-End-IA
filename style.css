@@ -1,0 +1,609 @@
+/**
+ * ============================================================================
+ * PROJETO NETFLIX - SELETOR DE PERFIS
+ * ============================================================================
+ * 
+ * Estilos CSS para a interface de seleção de perfis Netflix.
+ * Inclui:
+ * - Layout responsivo para múltiplos dispositivos
+ * - Dark mode e Light mode
+ * - Animações interativas
+ * - Acessibilidade
+ * 
+ * ============================================================================
+ */
+
+/**
+ * ESTILOS BASE DO CORPO DA PÁGINA
+ * Define cores, fontes e comportamento geral da página
+ */
+body {
+    background: #141414; /* Fundo escuro característico do Netflix */
+    color: #fff; /* Texto branco para bom contraste em fundo escuro */
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif; /* Fonte moderna e legível */
+    margin: 0; /* Remove espaçamento padrão */
+    min-height: 100vh; /* Garante que ocupe toda a altura da tela */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave ao trocar tema */
+}
+
+/**
+ * CONTAINER PRINCIPAL
+ * Define o layout do elemento main usando flexbox
+ */
+main {
+    display: flex; /* Usa flexbox para layout flexível */
+    flex-direction: column; /* Organiza filhos em coluna (verticalmente) */
+    align-items: center; /* Centraliza horizontalmente (cruz) */
+    justify-content: center; /* Centraliza verticalmente (principal) */
+    min-height: 100vh; /* Ocupa pelo menos 100% da altura da tela */
+    position: relative; /* Necessário para posicionar o botão de tema absolutamente */
+}
+
+/**
+ * TÍTULO PRINCIPAL
+ * "Quem está assistindo?" - Título da página
+ */
+h1 {
+    font-size: 2.5rem; /* Tamanho destacado para chamar atenção */
+    font-weight: bold; /* Negrito para maior relevância */
+    margin-bottom: 2rem; /* Espaço entre título e perfis */
+    letter-spacing: 1px; /* Espaçamento aumentado entre letras para elegância */
+}
+
+/**
+ * SEÇÃO DE PERFIS
+ * Container semântico que agrupa a lista de perfis
+ */
+section[aria-label="Perfis disponíveis"] {
+    width: 100%; /* Reutiliza toda a largura disponível */
+    max-width: 1200px; /* Limita para não ficar muito larga em telas grandes */
+    display: flex; /* Usa flexbox para layout */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+}
+
+/**
+ * LISTA DE PERFIS (NÃO ORDENADA)
+ * Container flexbox que agrupa todos os perfis
+ */
+ul.profiles {
+    display: flex; /* Usa flexbox para alinhamento horizontal */
+    gap: 2rem; /* Espaço entre cada perfil (16px em ambos os lados) */
+    list-style: none; /* Remove círculos/marcadores de lista */
+    padding: 0; /* Remove espaçamento interno padrão */
+    margin: 0; /* Remove espaçamento externo padrão */
+}
+
+/**
+ * ITEM DE PERFIL (ITEM DE LISTA)
+ * Cada perfil é um item <li> da lista
+ */
+li.profile {
+    text-decoration: none; /* Remove sublinhados (não é um link) */
+    color: #fff; /* Texto branco */
+    transition: transform 0.2s, box-shadow 0.2s; /* Animações suaves ao interagir */
+    list-style: none; /* Remove marcadores */
+}
+
+/* Remove sublinhado e cor padrão de links nos perfis */
+li.profile a,
+.profile a {
+    color: #fff;
+    text-decoration: none;
+}
+
+li.profile a:hover,
+.profile a:hover,
+li.profile a:focus,
+.profile a:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+/**
+ * LISTA ORDENADA DENTRO DO PERFIL
+ * Estructura semântica interna
+ */
+li.profile ol {
+    list-style: none; /* Remove números da lista ordenada */
+    padding: 0; /* Remove espaçamento */
+    margin: 0; /* Remove margens */
+}
+
+/**
+ * ITEM DA LISTA ORDENADA
+ * Contéiner direto da figura (imagem + legenda)
+ */
+li.profile ol li {
+    list-style: none; /* Remove marcadores */
+    padding: 0; /* Remove espaçamento */
+    margin: 0; /* Remove margens */
+}
+
+/**
+ * CONTEXTO DA IMAGEM E LEGENDA
+ * Agrupa imagem do perfil com seu nome
+ */
+figure {
+    margin: 0; /* Remove espaçamento padrão */
+    display: flex; /* Usa flexbox para layout */
+    flex-direction: column; /* Organiza em coluna (imagem em cima, nome embaixo) */
+    align-items: center; /* Centraliza horizontalmente */
+    padding: 1rem; /* Espaçamento interno */
+    border-radius: 22px; /* Cantos arredondados suaves */
+    border: none; /* Sem borda visível */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animações suaves */
+}
+
+/**
+ * EFEITO HOVER - FIGURA
+ * Quando o mouse passa sobre um perfil
+ */
+li.profile:hover figure {
+    transform: translateY(-5px); /* Move para cima 5px criando efeito flutuante */
+    box-shadow: 0 14px 30px rgba(24, 24, 24, 0.6); /* Sombra mais pronunciada */
+}
+
+/**
+ * IMAGENS DOS PERFIS
+ * Estilo base para todas as imagens de perfil
+ */
+img {
+    width: 270px; /* Largura fixa */
+    height: 290px; /* Altura fixa (mais alto que largo) */
+    border-radius: 12px; /* Cantos arredondados */
+    object-fit: cover; /* Corta a imagem mantendo proporção */
+    margin-bottom: 0.5rem; /* Espaço entre imagem e nome */
+    background: #141414; /* Cor de fundo se imagem não carregar */
+    display: block; /* Exibe como elemento de bloco */
+    border: 2px solid transparent; /* Borda transparente por padrão */
+    transition: border-color 0.2s ease, filter 0.2s ease; /* Transições suaves */
+}
+
+/**
+ * EFEITO HOVER - IMAGEM (GERAL)
+ * Brilho quando mouse passa sobre
+ */
+img:hover {
+    filter: brightness(1.1); /* Aumenta o brilho em 10% */
+}
+
+/**
+ * CORES INDIVIDUAIS POR PERFIL
+ * Cada perfil tem uma cor única que aparece ao passar o mouse
+ * 1º Perfil: Vermelho Netflix (#e50914)
+ */
+li.profile:nth-of-type(1):hover img {
+    border-color: #e50914; /* Borda vermelha */
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(229, 9, 20, 0.4)); /* Brilho + sombra vermelha */
+}
+
+li.profile:nth-of-type(1):hover figcaption {
+    color: #e50914; /* Texto do nome fica vermelho */
+}
+
+/**
+ * 2º Perfil: Azul (#0071eb)
+ */
+li.profile:nth-of-type(2):hover img {
+    border-color: #0071eb; /* Borda azul */
+    filter: brightness(1.1) drop-shadow(0 0 10px #0071eb); /* Brilho + sombra azul */
+}
+
+li.profile:nth-of-type(2):hover figcaption {
+    color: #0071eb; /* Texto do nome fica azul */
+}
+
+/**
+ * 3º Perfil: Rosa/Magenta (#ff07b5)
+ */
+li.profile:nth-of-type(3):hover img {
+    border-color: #ff07b5; /* Borda rosa */
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(176, 0, 245, 0.4)); /* Brilho + sombra rosa */
+}
+
+li.profile:nth-of-type(3):hover figcaption {
+    color: #ff07b5; /* Texto do nome fica rosa */
+}
+
+/**
+ * 4º Perfil: Púrpura (#8700f5)
+ */
+li.profile:nth-of-type(4):hover img {
+    border-color: #8700f5; /* Borda púrpura */
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(176, 0, 245, 0.4)); /* Brilho + sombra púrpura */
+}
+
+li.profile:nth-of-type(4):hover figcaption {
+    color: #b000f5; /* Texto do nome fica púrpura claro */
+}
+
+/**
+ * 5º Perfil: Púrpura Escuro (#9b59b6)
+ */
+li.profile:nth-of-type(5):hover img {
+    border-color: #9b59b6; /* Borda púrpura escuro */
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(176, 0, 245, 0.4)); /* Brilho + sombra púrpura */
+}
+
+li.profile:nth-of-type(5):hover figcaption {
+    color: #9b59b6; /* Texto do nome fica púrpura escuro */
+}
+
+/**
+ * 6º Perfil: Laranja (#ff4500)
+ */
+li.profile:nth-of-type(6):hover img {
+    border-color: #ff4500; /* Borda laranja */
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(229, 9, 20, 0.4)); /* Brilho + sombra laranja */
+}
+
+li.profile:nth-of-type(6):hover figcaption {
+    color: #ff4500; /* Texto do nome fica laranja */
+}
+
+/**
+ * EFEITO HOVER FINAL - FIGURA
+ * Aplicado ao hover do perfil (sobreposição)
+ */
+li.profile:hover figure {
+    transform: translateY(-5px);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.6);
+    filter: brightness(1.05);
+}
+
+/**
+ * LEGENDA DO PERFIL (NOME)
+ * Exibe o nome do perfil abaixo da imagem\n */
+figcaption {
+    font-size: 1.1rem; /* Tamanho legível */
+    font-weight: 500; /* Semi-negrito */
+    margin-top: 0.5rem; /* Espaço entre imagem e nome */
+    letter-spacing: 0.5px; /* Espaçamento entre letras para elegância */
+}
+
+/* ============================================================================
+ * RESPONSIVIDADE - ADAPTA LAYOUT PARA DIFERENTES TAMANHOS DE TELA
+ * ============================================================================ */
+
+/**
+ * RESPONSIVIDADE MOBILE
+ * Dispositivos pequenos: até 480px (smartphones em modo retrato)
+ * 
+ * Adaptações:
+ * - Título menor
+ * - Imagens reduzidas (120x130px)
+ * - Perfis podem quebrar em múltiplas linhas
+ * - Espaçamento compacto
+ */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem; /* Reduz de 2.5rem para 1.5rem */
+        margin-bottom: 1.5rem; /* Reduz espaçamento */
+        letter-spacing: 0.5px;
+    }
+
+    section[aria-label="Perfis disponíveis"] {
+        padding: 0 1rem; /* Adiciona espaçamento lateral */
+    }
+
+    ul.profiles {
+        flex-wrap: wrap; /* Permite quebra de linha em múltiplas colunas */
+        justify-content: center; /* Centraliza os perfis */
+        gap: 1rem; /* Reduz espaço entre perfis de 2rem para 1rem */
+    }
+
+    img {
+        width: 120px; /* Reduzido de 270px */
+        height: 130px; /* Reduzido de 290px */
+        border-radius: 8px; /* Cantos menos arredondados */
+    }
+
+    figure {
+        padding: 0.5rem; /* Reduzido de 1rem */
+        border-radius: 12px;
+    }
+
+    figcaption {
+        font-size: 0.85rem; /* Reduzido para tela pequena */
+    }
+
+    li.profile:hover figure {
+        transform: translateY(-3px); /* Animação mais sutil */
+        box-shadow: 0 8px 16px rgba(24, 24, 24, 0.5);
+    }
+}
+
+/**
+ * RESPONSIVIDADE TABLET
+ * Dispositivos médios: 481px a 768px (tablets em qualquer orientação)
+ * 
+ * Adaptações:
+ * - Tamanho intermediário
+ * - Imagens médias (180x200px)
+ * - Ainda permite quebra em algumas telas
+ * - Espaçamento moderado
+ */
+@media (min-width: 481px) and (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Tamanho intermediário entre mobile e desktop */
+        margin-bottom: 1.8rem;
+    }
+
+    section[aria-label="Perfis disponíveis"] {
+        padding: 0 1.5rem; /* Espaçamento lateral moderado */
+        max-width: 100%; /* Utiliza toda a largura */
+    }
+
+    ul.profiles {
+        flex-wrap: wrap; /* Permite quebra de linha se necessário */
+        gap: 1.5rem; /* Espaço moderado entre perfis */
+    }
+
+    img {
+        width: 180px; /* Tamanho intermediário */
+        height: 200px;
+        border-radius: 10px;
+    }
+
+    figure {
+        padding: 0.75rem;
+    }
+
+    figcaption {
+        font-size: 0.95rem;
+    }
+
+    li.profile:hover figure {
+        transform: translateY(-4px); /* Animação moderada */
+        box-shadow: 0 10px 24px rgba(24, 24, 24, 0.5);
+    }
+}
+
+/**
+ * RESPONSIVIDADE DESKTOP
+ * Dispositivos maiores: 769px e acima (desktops, laptops)
+ * 
+ * Adaptações:
+ * - Layout original mantido
+ * - Imagens em tamanho completo (270x290px)
+ * - Espaçamento generoso
+ * - Sem quebra de linha
+ */
+@media (min-width: 769px) {
+    h1 {
+        font-size: 2.5rem; /* Tamanho completo */
+        margin-bottom: 2rem;
+    }
+
+    section[aria-label="Perfis disponíveis"] {
+        max-width: 1200px; /* Limita para manter proporção */
+    }
+
+    ul.profiles {
+        gap: 2rem; /* Espaço generoso entre perfis */
+        flex-wrap: nowrap; /* Não quebra de linha em desktop */
+    }
+
+    img {
+        width: 270px; /* Tamanho completo */
+        height: 290px;
+    }
+
+    figure {
+        padding: 1rem;
+    }
+
+    figcaption {
+        font-size: 1.1rem;
+    }
+}
+
+/**
+ * RESPONSIVIDADE EXTRA GRANDE
+ * Telas FullHD e maiores: 1920px+ (monitores grandes, TVs)
+ * 
+ * Adaptações:
+ * - Imagens ampliadas para melhor visualização
+ * - Título ainda maior
+ * - Espaçamento ainda mais generoso
+ */
+@media (min-width: 1920px) {
+    img {
+        width: 300px; /* Aumentado de 270px */
+        height: 320px; /* Aumentado de 290px */
+        border-radius: 14px;
+    }
+
+    h1 {
+        font-size: 3rem; /* Aumentado de 2.5rem */
+        margin-bottom: 2.5rem;
+    }
+
+    ul.profiles {
+        gap: 2.5rem; /* Espaço maior */
+    }
+}
+
+/**
+ * OTIMIZAÇÕES ESPECIAIS
+ * Casos de uso específicos e orientações
+ */
+
+/**
+ * MODO PAISAGEM (LANDSCAPE)
+ * Dispositivos em orientação horizontal com altura limitada
+ * (ex: smartphones deitados, tablets em landscape)
+ * 
+ * Adaptações:
+ * - Título muito pequeno para economizar vertical
+ * - Imagens reduzi das para caber na tela
+ * - Sem espaço vertical extra
+ */
+@media (orientation: landscape) and (max-height: 500px) {
+    h1 {
+        margin-bottom: 1rem; /* Reduzido para economizar espaço */
+        font-size: 1.8rem; /* Menor */
+    }
+
+    main {
+        min-height: auto; /* Não força 100vh */
+        padding: 1rem 0; /* Espaçamento mínimo */
+    }
+
+    ul.profiles {
+        gap: 1rem; /* Espaço mínimo entre perfis */
+    }
+
+    img {
+        width: 100px; /* Muito reduzido para landscape */
+        height: 120px;
+    }
+}
+
+/**
+ * PREFERÊNCIA DE TEMA DO SISTEMA
+ * Se o usuário preferir dark mode no SO (Windows, macOS, Linux)
+ */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #0a0a0a; /* Preto mais profundo */
+        color: #fff;
+    }
+
+    img {
+        background: #0a0a0a;
+    }
+}
+
+/**
+ * PREFERÊNCIA DE MOVIMENTO REDUZIDO
+ * Para usuários com sensibilidade a movimento (acessibilidade)
+ * Desativa animações que podem causar náusea ou desconforto
+ */
+@media (prefers-reduced-motion: reduce) {
+    li.profile,
+    figure,
+    img {
+        transition: none; /* Remove todas as transições */
+    }
+
+    li.profile:hover figure {
+        transform: none; /* Remove animação de movimento */
+    }
+}
+
+/* ============================================================================
+ * DARK/LIGHT MODE TOGGLE
+ * Botão para alternar entre modo escuro e claro da aplicação
+ * ============================================================================ */
+
+/**
+ * BOTÃO DE ALTERNÂNCIA DE TEMA
+ * Posicionado no canto superior direito
+ */
+#theme-toggle {
+    position: absolute; /* Posicionamento absoluto para sobrepor conteúdo */
+    top: 20px; /* Distância da parte superior */
+    right: 20px; /* Distância da direita */
+    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente branco */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Borda branca semi-transparente */
+    border-radius: 50%; /* Torna circular */
+    width: 50px; /* Largura do botão */
+    height: 50px; /* Altura do botão (igual à largura para ser circular) */
+    cursor: pointer; /* Indica que é clicável */
+    display: flex; /* Usa flexbox para centralizar ícone */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    font-size: 1.5rem; /* Tamanho do ícone (lua/sol) */
+    transition: all 0.3s ease; /* Transição suave para todas as propriedades */
+    z-index: 1000; /* Fica acima de outros elementos */
+}
+
+/**
+ * EFEITO HOVER - BOTÃO DE TEMA
+ * Ao passar o mouse sobre o botão
+ */
+#theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2); /* Fundo mais opaco */
+    border-color: rgba(255, 255, 255, 0.5); /* Borda mais visível */
+    transform: scale(1.1); /* Aumenta 10% de tamanho */
+}
+
+/**
+ * EFEITO FOCUS - BOTÃO DE TEMA
+ * Para navegação por teclado (acessibilidade)
+ */
+#theme-toggle:focus {
+    outline: 2px solid #fff; /* Contorno branco visível */
+    outline-offset: 2px; /* Espaço entre botão e contorno */
+}
+
+/* ============================================================================
+ * ESTILOS DO MODO CLARO (LIGHT MODE)
+ * Aplicados quando data-theme="light" está ativado
+ * ============================================================================ */
+
+/**
+ * ESTILOS BASE - LIGHT MODE
+ * Inverte as cores para modo claro
+ */
+[data-theme="light"] body {
+    background: #f5f5f5; /* Fundo claro cinza */
+    color: #141414; /* Texto escuro para contraste */
+}
+
+/**
+ * IMAGENS - LIGHT MODE
+ * Ajusta fundo de imagens para modo claro
+ */
+[data-theme="light"] img {
+    background: #f5f5f5; /* Fundo cinza claro */
+    border-color: rgba(0, 0, 0, 0.1); /* Borda discreta escura */
+}
+
+/**
+ * BOTÃO DE TEMA - LIGHT MODE
+ * Inverte cores do botão para modo claro
+ */
+[data-theme="light"] #theme-toggle {
+    background: rgba(0, 0, 0, 0.1); /* Fundo semi-transparente escuro */
+    border-color: rgba(0, 0, 0, 0.3); /* Borda escura */
+    color: #141414; /* Ícone escuro */
+}
+
+/**
+ * EFEITO HOVER - BOTÃO - LIGHT MODE
+ */
+[data-theme="light"] #theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.2); /* Fundo mais opaco */
+    border-color: rgba(0, 0, 0, 0.5); /* Borda mais visível */
+}
+
+/**
+ * EFEITO FOCUS - BOTÃO - LIGHT MODE
+ */
+[data-theme="light"] #theme-toggle:focus {
+    outline-color: #141414; /* Contorno escuro */
+}
+
+/**
+ * SOMBRA DE HOVER - LIGHT MODE
+ * Ajusta sombra para ser visível em fundo claro
+ */
+[data-theme="light"] .profile:hover figure {
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2); /* Sombra escura suave */
+}
+
+/**
+ * RESPONSIVIDADE DO BOTÃO DE TEMA
+ * Ajusta tamanho e posicionamento em telas pequenas
+ */
+@media (max-width: 480px) {
+    #theme-toggle {
+        width: 40px; /* Reduzido de 50px para economizar espaço */
+        height: 40px; /* Reduzido de 50px */
+        font-size: 1.2rem; /* Ícone menor */
+        top: 15px; /* Mais próximo do topo */
+        right: 15px; /* Mais próximo da direita */
+    }
+}
