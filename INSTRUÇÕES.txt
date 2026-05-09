@@ -1,0 +1,72 @@
+# 📸 Apresentação de Fotos - Instruções
+
+Olá Mateus! Preparei tudo para você adicionar suas fotos à apresentação.
+
+## ✅ O que foi criado:
+
+1. **index.html** - A apresentação (já existe)
+2. **atualizar_fotos.bat** - Script automático para atualizar as fotos
+3. **update_fotos.py** - Script Python alternativo
+4. **update.js** - Script Node.js alternativo
+5. **README.md** - Instruções detalhadas
+
+## 🚀 Como usar (MAIS FÁCIL):
+
+### Opção 1: Clique duas vezes (recomendado)
+1. Vá até a pasta: `c:\Users\mateu\Downloads\fotos maezinha`
+2. **Clique duas vezes** no arquivo `atualizar_fotos.bat`
+3. Pronto! As fotos serão atualizadas automaticamente
+
+### Opção 2: Linha de comando
+1. Abra o **Prompt de Comando** (cmd.exe)
+2. Digite:
+   ```
+   cd "c:\Users\mateu\Downloads\fotos maezinha"
+   python update_fotos.py
+   ```
+
+## 👀 Visualizar a apresentação:
+
+1. Depois que as fotos forem atualizadas
+2. Abra o arquivo `index.html` com seu navegador favorito (Chrome, Edge, Firefox)
+3. A apresentação vai começar automaticamente com um slideshow das suas fotos
+
+## 🎮 Como usar o slideshow:
+
+- **▶ Próximo** - Botão seta para direita
+- **◀ Anterior** - Botão seta para esquerda
+- **⏸ Play/Pause** - Botão do meio
+- **Clique nos pontos** - Para ir direto para uma foto específica
+
+## 📂 Localização dos arquivos:
+
+```
+c:\Users\mateu\Downloads\fotos maezinha\
+├── index.html (a apresentação)
+├── atualizar_fotos.bat (clique aqui!)
+├── update_fotos.py (Python script)
+├── update.js (Node script)
+├── README.md (instruções detalhadas)
+└── assets/ (pasta com outros arquivos)
+```
+
+## 💡 Dicas:
+
+- Se alguma coisa não funcionar, tente o arquivo **atualizar_fotos.bat** primeiro
+- Se disser que não encontra Python ou Node, será porque um deles não está instalado
+- A apresentação funciona em qualquer navegador moderno
+- Você pode compartilhar o arquivo `index.html` com outras pessoas
+
+## 🖼️ Suas fotos serão atualizadas de:
+
+1. Foto com você no Natal (árvore com luzes)
+2. Foto sua com locomotiva antiga
+3. Foto da família (5 pessoas)
+4. Foto sua com vista para rio/praia
+5. Foto da família/grupo decorado
+
+Aproveite! 💕📸
+
+---
+
+**Qualquer dúvida, execute o script e ele vai guiar você!**
